@@ -20,7 +20,7 @@ class ImageProcessor:
         self.filename = None
         self.save_dir = "Modified/"
 
-    def load_image(self, filename):
+    def load_image(self, filename: str):
         """ при завантаженні запам'ятовуємо шлях та ім'я файлу """
         self.filename = filename
         fullname = os.path.join(workdir, filename)
@@ -166,7 +166,7 @@ def choose_workdir():
 
 
 def show_filenames_list():
-    extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp']
+    extensions: list[str] = ['.jpg', '.jpeg', '.png', '.gif', '.bmp']
     choose_workdir()
     filenames = filter_image(os.listdir(workdir), extensions)
 
@@ -182,8 +182,8 @@ def show_сhosen_іmage():
         workimage.show_image(os.path.join(workdir, workimage.filename))
 
 
-def filter_image(files, extensions):
-    """result = []
+def filter_image(files, extensions: list[str]) -> list[str]:
+    """result: list = []
     for filename in files:
         for ext in extensions:
             if filename.endswith(ext):
@@ -277,7 +277,7 @@ win.show()
 
 btn_dir.clicked.connect(show_filenames_list)
 
-workdir = ''
+workdir: str = ''
 # поточне робоче зображення для роботи
 workimage = ImageProcessor()
 lw_files.currentRowChanged.connect(show_сhosen_іmage)
